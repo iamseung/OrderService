@@ -16,21 +16,21 @@ public class OrderController {
 
     @PostMapping("/order/start-order")
     public StartOrderResponseDto startOrder(@RequestBody StartOrderDto dto) {
-
+        return orderService.startOrder(dto.userId, dto.productId,dto.count);
     }
 
     @PostMapping("/order/finish-order")
-    public FinishOrderResponseDto finishOrder(@RequestBody FinishOrderDto dto) {
-
+    public ProductOrder finishOrder(@RequestBody FinishOrderDto dto) {
+        return orderService.finishOrder(dto.orderId, dto.paymentMethodId, dto.addressId);
     }
 
     @GetMapping("/order/users/{userId}/orders")
     public List<ProductOrder> getUserOrders(@PathVariable Long userId) {
-
+        return orderService.getUserOrders(userId);
     }
 
     @GetMapping("/order/orders/{orderId}")
     public ProductOrderDetailDto getOrder(@PathVariable Long orderId) {
-
+        return orderService.getOrderDetail(orderId);
     }
 }
