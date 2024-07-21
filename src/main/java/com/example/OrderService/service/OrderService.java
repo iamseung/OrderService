@@ -31,7 +31,7 @@ public class OrderService {
         var product = catalogClient.getProduct(productId);
 
         // 2. 결제 수단 정보 조회
-        var paymentMethod = paymentClient. getPaymentMethod(userId);
+        var paymentMethod = paymentClient.getPaymentMethod(userId);
 
         // 3. 배송지 정보 조회
         var address = deliveryClient.getUserAddress(userId);

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 
+//@FeignClient(name = "deliveryClient", url = "http://delivery-service:8083")
 @FeignClient(name = "deliveryClient", url = "http://delivery-service:8080")
 public interface DeliveryClient {
 
