@@ -70,6 +70,8 @@ public class OrderService {
         processPaymentDto.amountKRW = Long.parseLong(product.get("price").toString());
         processPaymentDto.paymentMethodId = paymentMethodId;
 
+        System.out.println(processPaymentDto.toString());
+
         // 결제 요청
         var payment = paymentClient.processPayment(processPaymentDto);
 
@@ -108,6 +110,8 @@ public class OrderService {
         var paymentRes = paymentClient.getPayment(order.paymentId);
         var deliveryRes = deliveryClient.getDelivery(order.deliveryId);
 
+        System.out.println(paymentRes.get("paymentStatus"));
+
         return new ProductOrderDetailDto(
                 order.id,
                 order.userId,
@@ -115,8 +119,8 @@ public class OrderService {
                 order.orderStatus,
                 order.paymentId,
                 order.deliveryId,
-                deliveryRes.get("status").toString(),
-                paymentRes.get("paymentStatus").toString()
+                paymentRes.get("paymentStatus").toString(),
+                deliveryRes.get("deliveryStatus").toString()
         );
     }
 }
