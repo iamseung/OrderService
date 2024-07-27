@@ -44,3 +44,5 @@
 3. 처리량을 넘었을 때 발생할 수 있는 일시적인 오류
 
 이를 해결하기 위한 방안으로 ***Event-Driven 아키텍처*** 를 선택.
+
+[Docker Compose 로 Kafka Cluster 구현] (https://seung-seok.tistory.com/entry/Docker-Docker-Compose-%EB%A1%9C-Kafka-%EB%A5%BC)
