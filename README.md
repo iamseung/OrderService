@@ -45,4 +45,4 @@
 
 이를 해결하기 위한 방안으로 ***Event-Driven 아키텍처*** 를 선택.
 
-[Docker Compose 로 Kafka Cluster 구현] (https://seung-seok.tistory.com/entry/Docker-Docker-Compose-%EB%A1%9C-Kafka-%EB%A5%BC)
+### [Docker Compose 로 Kafka Cluster 구현](https://seung-seok.tistory.com/entry/Docker-Docker-Compose-%EB%A1%9C-Kafka-%EB%A5%BC)
