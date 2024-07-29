@@ -95,8 +95,6 @@ public class OrderService {
         var paymentRes = paymentClient.getPayment(order.paymentId);
         var deliveryRes = deliveryClient.getDelivery(order.deliveryId);
 
-        System.out.println(paymentRes.get("paymentStatus"));
-
         return new ProductOrderDetailDto(
                 order.id,
                 order.userId,

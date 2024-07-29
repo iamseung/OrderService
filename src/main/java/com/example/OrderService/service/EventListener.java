@@ -18,9 +18,6 @@ public class EventListener {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    OrderService orderService;
-
-    @Autowired
     private OrderRepository orderRepository;
 
     @Autowired
@@ -43,6 +40,7 @@ public class EventListener {
 
         // 배송 요청
         var product = catalogClient.getProduct(order.productId);
+
         var deliveryRequest = EdaMessage.DeliveryRequestV1.newBuilder()
                     .setOrderId(order.id)
                     .setProductName(product.get("name").toString())
@@ -59,8 +57,13 @@ public class EventListener {
         logger.info("[delivery_status_update] consumer : {}", object);
 
         if(object.getDeliveryStatus().equals("REQUESTED")) {
-            // 상품 재고 감소
             var order = orderRepository.findById(object.getOrderId()).orElseThrow();
+
+            // deliveryId 저장
+            order.deliveryId = object.getDeliveryId();
+//            orderRepository.save(order);
+
+            // 상품 재고 감소
             var decreaseStockCountDto = new DecreaseStockCountDto();
             decreaseStockCountDto.decreaseCount = order.count;
             catalogClient.decreaseStockCount(order.productId, decreaseStockCountDto);
